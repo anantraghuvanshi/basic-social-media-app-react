@@ -29,31 +29,7 @@ const SideBar = () => {
               <svg className="bi pe-none me-2" width="16" height="16">
                 <use xlinkHref="#speedometer2"></use>
               </svg>
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#table"></use>
-              </svg>
-              Orders
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#grid"></use>
-              </svg>
-              Products
-            </a>
-          </li>
-          <li>
-            <a href="#" className="nav-link text-white">
-              <svg className="bi pe-none me-2" width="16" height="16">
-                <use xlinkHref="#people-circle"></use>
-              </svg>
-              Customers
+              Create
             </a>
           </li>
         </ul>
