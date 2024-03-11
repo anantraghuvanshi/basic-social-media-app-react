@@ -1,39 +1,91 @@
+import { useContext, useRef } from "react";
+import { PostList } from "../store/post-list-store";
+
 const CreatePost = () => {
+  const { addPost } = useContext(PostList);
+
+  const userIdElement = useRef();
+  const postTitleElement = useRef();
+  const postBodyElement = useRef();
+  const reactionsElement = useRef();
+  const tagsElement = useRef();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const userId = userIdElement.current.value;
+    const postTitle = postTitleElement.current.value;
+    const postBody = postBodyElement.current.value;
+    const reactions = reactionsElement.current.value;
+    const tags = tagsElement.current.value.split(/(\s+)/);
+
+    addPost(userId, postTitle, postBody, reactions, tags);
+  };
   return (
     <>
-      <form>
+      <form className="create-post" onSubmit={handleSubmit}>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">
-            Email address
+          <label htmlFor="userId" class="form-label">
+            Enter your User ID here
           </label>
           <input
-            type="email"
+            ref={userIdElement}
+            type="text"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="userId"
+            placeholder="Your user id"
           />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
-          </div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">
-            Password
+          <label htmlFor="title" class="form-label">
+            Post Title
           </label>
           <input
-            type="password"
+            ref={postTitleElement}
+            type="text"
             class="form-control"
-            id="exampleInputPassword1"
+            id="title"
+            placeholder="How are you feeling today..."
           />
         </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">
-            Check me out
+        <div class="mb-3">
+          <label htmlFor="body" class="form-label">
+            Post Content
           </label>
+          <textarea
+            ref={postBodyElement}
+            rows="4"
+            type="text"
+            class="form-control"
+            id="body"
+            placeholder="Tell us more about it"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="reactions" class="form-label">
+            Reactions
+          </label>
+          <input
+            ref={reactionsElement}
+            type="text"
+            class="form-control"
+            id="reactions"
+            placeholder="How many people reacted to this post?"
+          />
+        </div>
+        <div class="mb-3">
+          <label htmlFor="tags" class="form-label">
+            Please enter your tags here
+          </label>
+          <input
+            ref={tagsElement}
+            type="text"
+            class="form-control"
+            id="tags"
+            placeholder="Enter your tags seperated by space"
+          />
         </div>
         <button type="submit" class="btn btn-primary">
-          Submit
+          Post
         </button>
       </form>
     </>

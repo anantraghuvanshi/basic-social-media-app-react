@@ -12,12 +12,26 @@ const postListReducer = (curPostList, action) => {
     newPostList = curPostList.filter(
       (post) => post.id !== action.payload.postId
     );
+  } else if (action.type === "ADD_POST") {
+    newPostList = [action.payload, ...curPostList];
   }
   return newPostList;
 };
 
 const PostListProvider = ({ children }) => {
-  const addPost = () => {};
+  const addPost = (userId, postTitle, postBody, reactions, tags) => {
+    dispatchPostList({
+      type: "ADD_POST",
+      payload: {
+        id: Date.now(),
+        title: postTitle,
+        body: postBody,
+        reactions: reactions,
+        userId: userId,
+        tags: tags,
+      },
+    });
+  };
   const deletePost = (postId) => {
     dispatchPostList({
       type: "DELETE_POST",
