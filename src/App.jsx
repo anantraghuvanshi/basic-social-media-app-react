@@ -4,7 +4,6 @@ import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
 import "./App.css";
 import CreatePost from "./components/CreatePost";
-import Post from "./components/Post";
 import PostList from "./components/PostList";
 import { useState } from "react";
 import PostListProvider from "./store/post-list-store";
